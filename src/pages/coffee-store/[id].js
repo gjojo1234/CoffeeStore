@@ -44,12 +44,11 @@ const CoffeeStoreItem = (initialProps) => {
   const [count, setCount] = useState(0);
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <h1>Loading....</h1>;
-  }
   const id = router.query.id;
 
-  const [coffeeStore, setCoffeeStore] = useState(initialProps.coffeeStore);
+  const [coffeeStore, setCoffeeStore] = useState(
+    initialProps.coffeeStore || {}
+  );
   const {
     state: { coffeeStores },
   } = useContext(StoreContext);
@@ -85,16 +84,24 @@ const CoffeeStoreItem = (initialProps) => {
     } else {
       handleCreateCoffeeStore(initialProps.coffeeStore);
     }
-  }, [id, initialProps, initialProps.coffeeStore]);
+  }, [id, initialProps.coffeeStore, coffeeStores]);
+  const {
+    name = "",
+    address = "",
 
-  const { name, address, imgUrl } = coffeeStore;
+    imgUrl = "",
+  } = coffeeStore;
   const { data, error } = useSWR(`/api/getCoffeeStoreById?id=${id}`, fetcher);
   console.log(data);
   useEffect(() => {
     if (data) {
+      setCoffeeStore(data.response[0]);
       setCount(data.response[0]?.voting || 0);
     }
   }, [data]);
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   const handleBtnUpvote = async () => {
     try {
       await fetch("/api/favouriteCoffeeStoreById", {
@@ -127,7 +134,7 @@ const CoffeeStoreItem = (initialProps) => {
           width={300}
           height={240}
           className={styles.image}
-          alt={name}
+          alt="hero image"
         />
         <div className={styles.container}>
           <p className={styles.address}>
@@ -135,7 +142,7 @@ const CoffeeStoreItem = (initialProps) => {
           </p>
 
           <p className={styles.stars}>
-            <HiOutlineStar className={`${count > 0 && styles.star}`} />
+            <HiOutlineStar />
             {count}
           </p>
           <button className={styles.btn} onClick={handleBtnUpvote}>

@@ -42,7 +42,7 @@ export default function Home(props) {
       }
     };
     setCoffeeStoresByLocation();
-  }, [latLong]);
+  }, [latLong, dispatch]);
   function btnTextChange() {
     handleTrackLocation();
   }
