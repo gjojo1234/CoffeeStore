@@ -135,6 +135,7 @@ const CoffeeStoreItem = (initialProps) => {
           height={240}
           className={styles.image}
           alt="hero image"
+          priority
         />
         <div className={styles.container}>
           <p className={styles.address}>

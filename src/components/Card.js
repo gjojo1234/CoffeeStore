@@ -13,7 +13,7 @@ const Card = (props) => {
           height={200}
           className={styles.cardImg}
           alt={props.name}
-          priority={true}
+          priority
         />
       </div>
     </Link>
