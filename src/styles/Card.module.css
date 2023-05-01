@@ -1,0 +1,23 @@
+.container {
+  padding: 0.5rem 2rem 1.2rem 2rem;
+  margin: auto;
+  width: 20rem;
+  height: auto;
+  border-radius: 0.75rem;
+  background-color: pink;
+}
+
+.container:hover {
+  cursor: pointer;
+  background-color: rgb(253, 229, 233);
+}
+.cardLink {
+  text-decoration: none;
+}
+.cardImg {
+  border-radius: 0.75rem;
+  width: 100%;
+}
+.cardHeader {
+  color: #373b64;
+}

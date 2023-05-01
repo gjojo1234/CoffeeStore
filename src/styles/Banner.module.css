@@ -1,0 +1,34 @@
+.banner {
+  padding-left: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  letter-spacing: -0.025em;
+}
+.title span {
+  color: white;
+}
+.subtitle {
+  font-size: 1.25rem;
+}
+
+.button {
+  font-size: 1.1rem;
+  color: rgb(236, 220, 220);
+  border: none;
+  background-color: rgb(50, 50, 192);
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 0.5rem;
+}
+.button:focus {
+  border: 1px dotted white;
+}
+
+@media screen and (min-width: 768px) {
+  .banner {
+    display: flex;
+    justify-content: space-around;
+  }
+}
